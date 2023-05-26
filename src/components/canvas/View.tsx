@@ -3,8 +3,16 @@
 import { forwardRef, Suspense, useImperativeHandle, useRef, ReactNode } from 'react'
 import { OrbitControls, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
+interface ViewProps {
+  children: ReactNode
+  orbit?: boolean
+  className?: string
+}
 
-export const Common = ({ color }) => (
+interface CommonProps {
+  color?: string
+}
+export const Common = ({ color }: CommonProps) => (
   <Suspense fallback={null}>
     {color && <color attach='background' args={[color]} />}
     <ambientLight intensity={0.5} />
