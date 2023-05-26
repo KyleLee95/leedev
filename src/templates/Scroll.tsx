@@ -6,6 +6,7 @@
 // 2 - add <ScrollTicker /> wherever in the canvas
 // 3 - enjoy
 import { addEffect, useFrame } from '@react-three/fiber'
+/*//@ts-ignore*/
 import Lenis from '@studio-freight/lenis'
 import { useEffect } from 'react'
 import { useRef } from 'react'
@@ -56,13 +57,15 @@ export default function Scroll({ children }) {
         width: '100%',
         height: '100%',
         top: 0,
-      }}>
+      }}
+    >
       <div
         ref={content}
         style={{
           position: 'relative',
           minHeight: '200vh',
-        }}>
+        }}
+      >
         {children}
       </div>
     </div>
