@@ -953,7 +953,22 @@
   dependencies:
     commander "^2.15.1"
 
-"@contentful/rich-text-types@^16.0.2":
+"@contentful/rich-text-html-renderer@^16.0.5":
+  version "16.0.5"
+  resolved "https://registry.npmjs.org/@contentful/rich-text-html-renderer/-/rich-text-html-renderer-16.0.5.tgz"
+  integrity sha512-iL5I6P2yUx7WsyBZLzbQxmEmL0V80baQv08RA1CqfLDt2OR2qU2h/Ii2NHQMl8xHQS07l27Y6jbbCACvVStCbw==
+  dependencies:
+    "@contentful/rich-text-types" "^16.2.0"
+    escape-html "^1.0.3"
+
+"@contentful/rich-text-react-renderer@^15.16.5":
+  version "15.16.5"
+  resolved "https://registry.npmjs.org/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-15.16.5.tgz"
+  integrity sha512-VYWs0zA0yYf1d7Q+w18xHt5nK6Gme0X8wj9Hi0oSi8ZDtGPaluE77eOOdTtq7keawfts/O3/kyFLV18vnBVbSA==
+  dependencies:
+    "@contentful/rich-text-types" "^16.2.0"
+
+"@contentful/rich-text-types@^16.0.2", "@contentful/rich-text-types@^16.2.0":
   version "16.2.0"
   resolved "https://registry.npmjs.org/@contentful/rich-text-types/-/rich-text-types-16.2.0.tgz"
   integrity sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw==
@@ -2435,6 +2450,11 @@ escalade@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
+
+escape-html@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
+  integrity sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -4344,7 +4364,7 @@ react-composer@^5.0.3:
   dependencies:
     prop-types "^15.6.0"
 
-react-dom@^18.2.0, react-dom@>=16.13, react-dom@>=18.0:
+"react-dom@^16.8.6 || ^17.0.0 || ^18.0.0", react-dom@^18.2.0, react-dom@>=16.13, react-dom@>=18.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -4377,7 +4397,7 @@ react-use-measure@^2.1.1:
   dependencies:
     debounce "^1.2.1"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.13, react@>=16.8, react@>=17.0, react@>=18.0:
+"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.6 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.13, react@>=16.8, react@>=17.0, react@>=18.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
