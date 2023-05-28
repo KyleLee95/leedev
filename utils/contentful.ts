@@ -13,3 +13,12 @@ export const getBlogPosts = async () => {
 
   return response.items
 }
+
+export const getBlogPostBySlug = async (slug: string) => {
+  const res = await client.getEntries({
+    content_type: 'blogPost',
+    'fields.slug': slug,
+    include: 2,
+  })
+  return res
+}

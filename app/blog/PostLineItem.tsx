@@ -1,6 +1,5 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
-import { getBlogPostBySlug } from 'utils/contentful'
+import Link from 'next/link'
 const Bold = ({ children }) => <span className='font-bold'>{children}</span>
 
 const Text = ({ children }) => <p className='content-center'>{children}</p>
@@ -32,10 +31,7 @@ const options = {
   },
 }
 
-export default async function Page({ params }) {
-  const { slug } = params
-  const post = await getBlogPostBySlug(slug)
-  console.log('post', post.items[0])
-  // const dtrc = documentToReactComponents(body, options)
-  return <main className='justify-self-center'>here</main>
+export const PostLineItem = (props) => {
+  const { title, slug } = props.post.fields
+  return <Link href={`/blog/${slug}/`}> {title}</Link>
 }
