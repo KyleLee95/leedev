@@ -58,7 +58,7 @@ export default async function Page({ params }) {
   //destructuring the body off the post
   const { items } = post
   //@ts-ignore
-  const { body } = items[0].field
+  const { body } = items[0].fields
   const dtrc = documentToReactComponents(body, options)
   return (
     <main className='mx-auto max-w-2xl px-4 pt-20'>
