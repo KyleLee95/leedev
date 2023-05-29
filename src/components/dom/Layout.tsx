@@ -1,5 +1,4 @@
 'use client'
-
 import { Header } from '@/components/dom/Header'
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
@@ -12,14 +11,13 @@ const Layout = ({ children }) => {
     <div
       ref={ref}
       style={{
-        position: 'relative',
+        position: 'fixed',
         width: ' 100%',
         height: '100%',
         overflow: 'auto',
         touchAction: 'auto',
       }}
     >
-      <Header />
       {children}
       <Scene
         style={{
