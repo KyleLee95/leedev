@@ -1,5 +1,6 @@
 'use client'
 
+import { Header } from '@/components/dom/Header'
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
 const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: false })
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
         touchAction: 'auto',
       }}
     >
+      <Header />
       {children}
       <Scene
         style={{

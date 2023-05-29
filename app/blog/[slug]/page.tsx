@@ -60,7 +60,7 @@ export default async function Page({ params }) {
   const { body } = items[0].fields
   const dtrc = documentToReactComponents(body, options)
   return (
-    <main className='mx-auto max-w-2xl px-4'>
+    <main className='mx-auto max-w-2xl px-4 pt-20'>
       <article className=''>{dtrc}</article>
     </main>
   )
