@@ -4,7 +4,7 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { getBlogPostBySlug } from 'utils/contentful'
 const Bold = ({ children }) => <span className='font-bold'>{children}</span>
 
-const Text = ({ children }) => <p className='content-center'>{children}</p>
+const Text = ({ children }) => <p className='my-3 max-w-prose content-center text-lg '>{children}</p>
 
 const HyperLink = ({ children, node }) => (
   <a className='text-blue-300 hover:underline' href={node.data.uri}>
@@ -34,16 +34,6 @@ const AssetBlock = ({ children, node }) => {
   )
 }
 
-const EntryBlock = ({ children, node }) => {
-  console.log('entryBlock', children, node)
-  return <div />
-  // <Image
-  //   // src={`https://${node.data.target.fields.file.url}`}
-  //   height={node.data.target.fields.file.details.image.height}
-  //   width={node.data.target.fields.file.details.image.width}
-  //   alt={node.data.target.fields.description}
-  // />
-}
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
@@ -70,7 +60,7 @@ export default async function Page({ params }) {
   const { body } = items[0].fields
   const dtrc = documentToReactComponents(body, options)
   return (
-    <main className=' mx-auto max-w-2xl px-4'>
+    <main className='mx-auto max-w-2xl px-4'>
       <article className=''>{dtrc}</article>
     </main>
   )
