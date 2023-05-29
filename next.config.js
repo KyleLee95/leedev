@@ -21,7 +21,14 @@ const nextConfig = {
     reactRoot: 'concurrent',
     appDir: true,
   },
-  images: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+      },
+    ],
+  },
   webpack(config, { isServer }) {
     // audio support
     config.module.rules.push({
