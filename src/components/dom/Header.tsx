@@ -7,7 +7,15 @@ const navItems = [
   { name: 'Blog', href: '/blog' },
 ]
 
-const NavLink = (props) => {
+interface NavLinkProps {
+  navItem: NavItem
+}
+interface NavItem {
+  name: string
+  href: string
+}
+
+const NavLink = (props: NavLinkProps) => {
   const pathName = usePathname()
   const { name, href } = props.navItem
   return (
@@ -17,7 +25,7 @@ const NavLink = (props) => {
   )
 }
 
-export const Header = ({ params }) => {
+export const Header = () => {
   return (
     <header className='z-10 mr-4 items-center bg-slate-800 fixed w-full h-20 flex px-10'>
       <p className='text-lg'>

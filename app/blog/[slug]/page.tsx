@@ -57,7 +57,8 @@ export default async function Page({ params }) {
   const post = await getBlogPostBySlug(slug)
   //destructuring the body off the post
   const { items } = post
-  const { body } = items[0].fields
+  //@ts-ignore
+  const { body } = items[0].field
   const dtrc = documentToReactComponents(body, options)
   return (
     <main className='mx-auto max-w-2xl px-4 pt-20'>
