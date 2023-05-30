@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 const navItems = [
@@ -26,17 +27,77 @@ const NavLink = (props: NavLinkProps) => {
   )
 }
 export const Header = () => {
+  const [isOpen, setOpen] = useState(false)
   return (
     //the header element's primary function is to be fixed and have a z-index of 10
     //so that the child div can have the CSS effects without overlapping the scrollbar
-    <header className='fixed flex z-10 w-full'>
-      <div className='flex w-full h-20 justify-center items-center mx-6 z-10 bg-neutral-800/50 backdrop-blur-sm'>
+    <header className='fixed z-10 flex w-full'>
+      <div className='z-10 mx-10 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
         <p className='text-lg'>
           <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
             Kyle Lee
           </Link>
         </p>
+        <nav className='ml-auto items-center gap-2 hidden sm:flex sm:gap-6'>
+          {navItems.map((navItem) => {
+            return <NavLink key={navItem.name} navItem={navItem} />
+          })}
+        </nav>
 
+        <nav className='ml-auto items-center sm:hidden'>
+          <button
+            onClick={() => {
+              setOpen(!isOpen)
+            }}
+            type='button'
+            className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
+            aria-controls='mobile-menu'
+            aria-expanded='false'
+          >
+            <span className='sr-only'>Open main menu</span>
+            {!isOpen ? (
+              <svg
+                className='block h-6 w-6'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth='1.5'
+                stroke='currentColor'
+                aria-hidden='true'
+              >
+                <path strokeLinecap='round' strokeLinejoin='round' d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5' />
+              </svg>
+            ) : null}
+            {isOpen ? (
+              <svg
+                className='h-6 w-6'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth='1.5'
+                stroke='currentColor'
+                aria-hidden='true'
+              >
+                <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
+              </svg>
+            ) : null}
+          </button>
+        </nav>
+      </div>
+    </header>
+  )
+}
+// {navItems.map((navItem) => {
+//   return <NavLink key={navItem.name} navItem={navItem} />
+// })}
+
+export const HamburgerHeader = () => {
+  return (
+    <header className='fixed z-10 flex w-full'>
+      <div className='z-10 mx-10 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
+        <p className='text-lg'>
+          <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
+            Kyle Lee
+          </Link>
+        </p>
         <nav className='ml-auto flex items-center gap-2 sm:gap-6'>
           {navItems.map((navItem) => {
             return <NavLink key={navItem.name} navItem={navItem} />
@@ -46,15 +107,3 @@ export const Header = () => {
     </header>
   )
 }
-
-// <header className='overflow-auto top-0 left-0 px-10 z-10 fixed flex h-20 w-full items-center backdrop-blur-sm'>
-// <nav className='fixed flex w-full'>
-//   <p className='text-lg'>
-//     <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
-//       Kyle Lee
-//     </Link>
-//   </p>
-//   {navItems.map((navItem) => {
-//     return <NavLink key={navItem.name} navItem={navItem} />
-//   })}
-// </nav>
