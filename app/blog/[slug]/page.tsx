@@ -32,7 +32,6 @@ const AssetBlock = ({ children, node }) => {
     />
   )
 }
-
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
@@ -42,7 +41,6 @@ const options = {
     [BLOCKS.HEADING_1]: (node, children) => <TitleH1>{children}</TitleH1>,
     [BLOCKS.HEADING_2]: (node, children) => <TitleH2>{children}</TitleH2>,
     [BLOCKS.EMBEDDED_ASSET]: (node, children) => <AssetBlock node={node}>{children}</AssetBlock>,
-    // [BLOCKS.EMBEDDED_ENTRY]: (node, children) => <EntryBlock node>{children}</EntryBlock>,
     [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
     [INLINES.HYPERLINK]: (node, children) => {
       return <HyperLink node={node}>{children}</HyperLink>
@@ -56,8 +54,8 @@ export default async function Page({ params }) {
   const post = await getBlogPostBySlug(slug)
   //destructuring the body off the post
   const { items } = post
-  //@ts-ignore
   const { body } = items[0].fields
+  //@ts-ignore
   const dtrc = documentToReactComponents(body, options)
   return (
     <main className='mx-auto max-w-2xl px-4 pt-20'>

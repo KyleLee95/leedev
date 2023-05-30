@@ -30,3 +30,8 @@ export const getProjects = async () => {
   })
   return res
 }
+
+export const getMainContent = async () => {
+  const res = await client.getEntry('7bvo3CTPVJROpCEcp3v5VV')
+  return res
+}
