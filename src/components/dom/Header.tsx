@@ -33,7 +33,7 @@ export const Header = () => {
     //so that the child div can have the CSS effects without overlapping the scrollbar
     <>
       <header className='fixed z-10 flex w-full'>
-        <div className='z-10 mx-10 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
+        <div className='z-10 px-5 sm:mr-2 md:mr-6 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
           <p className='text-lg'>
             <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
               Kyle Lee
@@ -53,8 +53,8 @@ export const Header = () => {
               }}
               type='button'
               className='inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
-              aria-controls='mobile-menu'
-              aria-expanded='false'
+              // aria-controls='mobile-menu'
+              // aria-expanded='false'
             >
               <span className='sr-only'>Open main menu</span>
               {!isOpen ? (
@@ -90,6 +90,7 @@ export const Header = () => {
       </header>
 
       {/*Dropdown menu*/}
+
       {isOpen ? (
         <div className='fixed z-10 bg-neutral-800 mx-auto w-full h-full mt-20 flex flex-col'>
           {navItems.map((navItem) => {

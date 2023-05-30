@@ -3,7 +3,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { getBlogPostBySlug } from 'utils/contentful'
 const Bold = ({ children }) => <span className='font-bold'>{children}</span>
-
 const Text = ({ children }) => <p className='my-3 max-w-prose content-center text-lg '>{children}</p>
 
 const HyperLink = ({ children, node }) => (
@@ -62,7 +61,7 @@ export default async function Page({ params }) {
   const dtrc = documentToReactComponents(body, options)
   return (
     <main className='mx-auto max-w-2xl px-4 pt-20'>
-      <article className=''>{dtrc}</article>
+      <article>{dtrc}</article>
     </main>
   )
 }
