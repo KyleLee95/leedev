@@ -22,3 +22,11 @@ export const getBlogPostBySlug = async (slug: string) => {
   })
   return res
 }
+
+export const getProjects = async () => {
+  const res = await client.getEntries({
+    content_type: 'project',
+    include: 2,
+  })
+  return res
+}

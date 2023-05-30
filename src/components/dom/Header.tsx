@@ -30,7 +30,7 @@ export const Header = () => {
     //the header element's primary function is to be fixed and have a z-index of 10
     //so that the child div can have the CSS effects without overlapping the scrollbar
     <header className='fixed flex z-10 w-full'>
-      <div className='flex w-full h-20 justify-center items-center mx-6 z-10 bg-slate-800/50 backdrop-blur-sm'>
+      <div className='flex w-full h-20 justify-center items-center mx-6 z-10 bg-neutral-800/50 backdrop-blur-sm'>
         <p className='text-lg'>
           <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
             Kyle Lee
