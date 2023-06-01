@@ -33,6 +33,7 @@ const NavLink = (props: NavLinkProps) => {
 
   const { name, href, path } = props.navItem
   const isActive = parsePathname(pathname, path)
+
   return (
     <Link href={href} className={isActive ? 'relative py-1 underline' : 'relative py-1'}>
       {name}
@@ -41,6 +42,9 @@ const NavLink = (props: NavLinkProps) => {
 }
 export const Header = () => {
   const [isOpen, setOpen] = useState(false)
+
+  const pathname = usePathname()
+
   return (
     //the header element's primary function is to be fixed and have a z-index of 10
     //so that the child div can have the CSS effects without overlapping the scrollbar
@@ -107,14 +111,20 @@ export const Header = () => {
       {isOpen ? (
         <div className='fixed z-10 bg-neutral-800 mx-auto w-full h-full mt-20 flex flex-col'>
           {navItems.map((navItem) => {
+            const { name, href, path } = navItem
+            const isActive = parsePathname(pathname, path)
             return (
               <Link
                 onClick={() => {
                   setOpen(false)
                 }}
-                key={navItem.name}
-                href={navItem.href}
-                className='text-white w-full relative border-b justify-self-center'
+                key={name}
+                href={href}
+                className={
+                  isActive
+                    ? 'py-4 text-white w-full relative border-b justify-self-center'
+                    : 'py-4 text-stone-400 w-full relative border-b justify-self-center'
+                }
               >
                 {navItem.name}
               </Link>
@@ -123,23 +133,5 @@ export const Header = () => {
         </div>
       ) : null}
     </>
-  )
-}
-export const HamburgerHeader = () => {
-  return (
-    <header className='fixed z-10 flex w-full'>
-      <div className='z-10 mx-10 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
-        <p className='text-lg'>
-          <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
-            Kyle Lee
-          </Link>
-        </p>
-        <nav className='ml-auto flex items-center gap-2 sm:gap-6'>
-          {navItems.map((navItem) => {
-            return <NavLink key={navItem.name} navItem={navItem} />
-          })}
-        </nav>
-      </div>
-    </header>
   )
 }
