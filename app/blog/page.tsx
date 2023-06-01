@@ -7,7 +7,7 @@ const TitleH1 = ({ children }) => {
 export default async function Page() {
   const posts = await getBlogPosts()
   return (
-    <div className='mx-auto mt-20 max-w-2xl'>
+    <div className='mx-auto mt-20 max-w-2xl px-4'>
       <TitleH1>Blog</TitleH1>
       <ul>
         {posts.map((post) => {

@@ -1,12 +1,12 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Work', href: '/work' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Home', href: '/', path: '/' },
+  { name: 'Work', href: '/work', path: 'work' },
+  { name: 'Blog', href: '/blog', path: 'blog' },
 ]
 
 interface NavLinkProps {
@@ -15,13 +15,26 @@ interface NavLinkProps {
 interface NavItem {
   name: string
   href: string
+  path: string
 }
+const parsePathname = (pathname: string, path: string): boolean => {
+  let splitPath: string[] = pathname.split('/')
+  let isPath: boolean = false
+  if (pathname === '/' && path === '/') {
+    isPath = true
+  } else if (splitPath.includes(path)) {
+    isPath = true
+  }
 
+  return isPath
+}
 const NavLink = (props: NavLinkProps) => {
-  const pathName = usePathname()
-  const { name, href } = props.navItem
+  const pathname = usePathname()
+
+  const { name, href, path } = props.navItem
+  const isActive = parsePathname(pathname, path)
   return (
-    <Link href={href} className={pathName === href ? 'relative py-1 underline' : 'relative py-1'}>
+    <Link href={href} className={isActive ? 'relative py-1 underline' : 'relative py-1'}>
       {name}
     </Link>
   )
@@ -33,7 +46,7 @@ export const Header = () => {
     //so that the child div can have the CSS effects without overlapping the scrollbar
     <>
       <header className='fixed z-10 flex w-full'>
-        <div className='z-10 px-5 sm:mr-2 md:mr-6 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
+        <div className='px-5 mr-4 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
           <p className='text-lg'>
             <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
               Kyle Lee
