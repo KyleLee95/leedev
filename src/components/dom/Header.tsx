@@ -40,6 +40,26 @@ const NavLink = (props: NavLinkProps) => {
     </Link>
   )
 }
+
+const MobileNavLink = (props: NavLinkProps) => {
+  const pathname = usePathname()
+  const { name, href, path } = props.navItem
+  const isActive = parsePathname(pathname, path)
+  return (
+    <Link
+      key={name}
+      href={href}
+      className={
+        isActive
+          ? 'py-4 text-white w-full relative border-b justify-self-center'
+          : 'py-4 text-stone-400 w-full relative border-b justify-self-center'
+      }
+    >
+      {props.navItem.name}
+    </Link>
+  )
+}
+
 export const Header = () => {
   const [isOpen, setOpen] = useState(false)
 
@@ -109,26 +129,9 @@ export const Header = () => {
       {/*Dropdown menu*/}
 
       {isOpen ? (
-        <div className='fixed z-10 bg-neutral-800 mx-auto w-full h-full mt-20 flex flex-col'>
+        <div className='fixed z-10 bg-neutral-800 mx-auto w-full h-full mt-20 px-4 flex flex-col'>
           {navItems.map((navItem) => {
-            const { name, href, path } = navItem
-            const isActive = parsePathname(pathname, path)
-            return (
-              <Link
-                onClick={() => {
-                  setOpen(false)
-                }}
-                key={name}
-                href={href}
-                className={
-                  isActive
-                    ? 'py-4 text-white w-full relative border-b justify-self-center'
-                    : 'py-4 text-stone-400 w-full relative border-b justify-self-center'
-                }
-              >
-                {navItem.name}
-              </Link>
-            )
+            return <MobileNavLink key={navItem.href} navItem={navItem} />
           })}
         </div>
       ) : null}
