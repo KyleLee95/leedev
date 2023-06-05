@@ -1,6 +1,12 @@
 import { draftMode } from 'next/headers'
 import { Card } from '@/components/dom/Card'
 import { getProjects } from 'utils/contentful'
+
+export const metadata = {
+  title: 'Kyle Lee | Work',
+  description: `Kyle Lee's personal website.`,
+}
+
 export default async function Page() {
   const projects = await getProjects({ preview: draftMode().isEnabled })
   const { items } = projects

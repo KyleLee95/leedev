@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
   { name: 'Home', href: '/', path: '/' },
@@ -51,8 +51,8 @@ const MobileNavLink = (props: NavLinkProps) => {
       href={href}
       className={
         isActive
-          ? 'py-4 text-white w-full relative border-b justify-self-center'
-          : 'py-4 text-stone-400 w-full relative border-b justify-self-center'
+          ? 'relative w-full justify-self-center border-b py-4 text-white'
+          : 'relative w-full justify-self-center border-b py-4 text-stone-400'
       }
     >
       {props.navItem.name}
@@ -70,13 +70,13 @@ export const Header = () => {
     //so that the child div can have the CSS effects without overlapping the scrollbar
     <>
       <header className='fixed z-10 flex w-full'>
-        <div className='px-5 mr-4 flex h-20 w-full items-center justify-center bg-neutral-800/50 backdrop-blur-sm'>
+        <div className='mr-4 flex h-20 w-full items-center justify-center bg-neutral-800/50 px-5 backdrop-blur-sm'>
           <p className='text-lg'>
             <Link className='text-2xl text-stone-400 hover:text-white' href='/'>
               Kyle Lee
             </Link>
           </p>
-          <nav className='ml-auto items-center gap-2 hidden md:flex md:gap-6'>
+          <nav className='ml-auto hidden items-center gap-2 md:flex md:gap-6'>
             {navItems.map((navItem) => {
               return <NavLink key={navItem.name} navItem={navItem} />
             })}
@@ -129,7 +129,7 @@ export const Header = () => {
       {/*Dropdown menu*/}
 
       {isOpen ? (
-        <div className='fixed z-10 bg-neutral-800 mx-auto w-full h-full mt-20 px-4 flex flex-col'>
+        <div className='fixed z-10 mx-auto mt-20 flex h-full w-full flex-col bg-neutral-800 px-4'>
           {navItems.map((navItem) => {
             return <MobileNavLink key={navItem.href} navItem={navItem} />
           })}

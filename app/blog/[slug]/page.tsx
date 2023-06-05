@@ -6,6 +6,10 @@ import { getBlogPostBySlug } from 'utils/contentful'
 const Bold = ({ children }) => <span className='font-bold'>{children}</span>
 const Text = ({ children }) => <p className='my-3 max-w-prose content-center text-lg '>{children}</p>
 
+export let metadata = {
+  title: 'Kyle Lee | ',
+  description: `Kyle Lee's personal website.`,
+}
 const HyperLink = ({ children, node }) => (
   <a className='text-blue-300 hover:underline' href={node.data.uri}>
     {children}
@@ -52,6 +56,7 @@ const options = {
 export default async function Page({ params }) {
   const { slug } = params
   //use the slug to fetch the post
+  metadata.title = `Kyle Lee | ${slug}`
   const post = await getBlogPostBySlug({ preview: draftMode().isEnabled }, slug)
   //destructuring the body off the post
   const { items } = post

@@ -2,6 +2,10 @@ import { draftMode } from 'next/headers'
 import { getBlogPosts } from 'utils/contentful'
 import { PostLineItem } from './PostLineItem'
 
+export const metadata = {
+  title: 'Kyle Lee | Blog',
+  description: `Kyle Lee's personal website.`,
+}
 const TitleH1 = ({ children }) => {
   return <h1 className='text-4xl font-bold'>{children}</h1>
 }
