@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { draftMode } from 'next/headers'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { getBlogPostBySlug } from 'utils/contentful'
@@ -51,7 +52,7 @@ const options = {
 export default async function Page({ params }) {
   const { slug } = params
   //use the slug to fetch the post
-  const post = await getBlogPostBySlug(slug)
+  const post = await getBlogPostBySlug({ preview: draftMode().isEnabled }, slug)
   //destructuring the body off the post
   const { items } = post
   const { body } = items[0].fields
