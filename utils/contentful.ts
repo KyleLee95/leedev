@@ -45,7 +45,7 @@ export const getBlogPostBySlug = async ({ preview }: FetchBlogPostsOptions, slug
 }
 
 export const getProjects = async ({ preview }: FetchBlogPostsOptions) => {
-  const contentful = contentfulClient(preview)
+  const contentful = contentfulClient({ preview })
   const res = await contentful.getEntries({
     content_type: 'project',
     include: 2,
