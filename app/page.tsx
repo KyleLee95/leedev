@@ -1,3 +1,4 @@
+import { draftMode } from 'next/headers'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { getMainContent } from 'utils/contentful'
@@ -41,7 +42,7 @@ const AssetBlock = ({ node }) => {
 const EntryBlock = ({ children, node }) => {
   const { title, file, link } = node.data.target.fields
   return (
-    <button className='bg-sky-300/90 block my-4 rounded'>
+    <button className='my-4 block rounded bg-sky-300/90'>
       <Link className='px-2 text-black' target='_blank' href={link}>
         <Image
           className='inline px-1'
@@ -76,7 +77,7 @@ const options = {
 }
 
 export default async function Page() {
-  const content = await getMainContent()
+  const content = await getMainContent({ preview: draftMode().isEnabled })
   const { fields } = content
   //@ts-ignore
   const dtrc = documentToReactComponents(fields.text, options)

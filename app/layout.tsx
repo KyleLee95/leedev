@@ -1,3 +1,4 @@
+import { draftMode } from 'next/headers'
 import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
 import { Header } from '@/components/dom/Header'
@@ -18,7 +19,15 @@ export default function RootLayout({ children }) {
         {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
 
         <Header />
-        <Layout>{children}</Layout>
+        <Layout>
+          {draftMode().isEnabled && (
+            <p className='bg-orange-200 px-[6vw] py-4'>
+              Draft mode is on! <ExitDraftModeLink className='underline' />
+            </p>
+          )}
+
+          {children}
+        </Layout>
       </body>
     </html>
   )
