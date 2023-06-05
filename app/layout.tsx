@@ -2,6 +2,7 @@ import { draftMode } from 'next/headers'
 import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
 import { Header } from '@/components/dom/Header'
+import ExitDraftModeLink from './ExitDraftModeLink'
 export const metadata = {
   title: 'Kyle Lee | Homepage',
   description: `Kyle Lee's personal website.`,
@@ -20,13 +21,13 @@ export default function RootLayout({ children }) {
 
         <Header />
         <Layout>
+          {children}
+
           {draftMode().isEnabled && (
             <p className='bg-orange-200 px-[6vw] py-4'>
               Draft mode is on! <ExitDraftModeLink className='underline' />
             </p>
           )}
-
-          {children}
         </Layout>
       </body>
     </html>
