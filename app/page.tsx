@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 const Bold = ({ children }) => <span className='mr-4 font-bold'>{children}</span>
 const Text = ({ children }) => <p className='my-3 max-w-prose content-center text-lg '>{children}</p>
-
+dsnafioasdfioasdfoaf
 const HyperLink = ({ children, node }) => (
   <a className='text-blue-300 hover:underline' href={node.data.uri}>
     {children}
