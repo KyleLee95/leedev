@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers'
 import { redirect } from 'next/navigation'
 const { CONTENTFUL_PREVIEW_SECRET } = process.env
-
+sadfnasiodiasodfoiasdfioasdfiosafiodasn
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   if (searchParams.get('previewSecret') !== CONTENTFUL_PREVIEW_SECRET) {
